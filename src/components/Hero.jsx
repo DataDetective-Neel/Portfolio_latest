@@ -83,16 +83,16 @@ export default function Hero() {
         {/* RIGHT PANEL */}
         <div className="w-[25%] flex justify-end pr-12">
 
-          <div className="relative w-[440px] bg-[#0b1220]/85 backdrop-blur-2xl 
+          <div className="relative w-[440px] bg-[#0b1220]/40 backdrop-blur-2xl 
           border border-blue-500/50 rounded-xl p-6 
           shadow-[0_0_100px_rgba(59,130,246,0.35)]
           overflow-hidden">
 
             {/* ACCENT LINE */}
-            <div className="absolute left-0 top-0 h-full w-[2px] bg-blue-400/60 blur-[2px]" />
+            <div className="absolute left-0 top-0 h-full w-[2px] bg-blue-400/10 blur-[2px]" />
 
             {/* INNER GLOW */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent" />
 
             {/* GRID */}
             <div className="absolute inset-0 
