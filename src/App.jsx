@@ -1,15 +1,15 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Cases from "./components/Cases";
-import Footer from "./components/Footer";
+import CaseFiles from "./components/CaseFiles";
+import Workflow from "./components/Workflow";
 
 function App() {
   return (
     <>
       <Navbar />
       <Hero />
-      <Cases />
-      <Footer />
+      <Workflow />
+      <CaseFiles />
     </>
   );
 }
