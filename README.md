@@ -1,16 +1,110 @@
-# React + Vite
+# Data Detective Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive web application showcasing data detective case studies and investigations. Built with React and Vite for fast development and optimized production builds.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Case Card Display**: Browse through different case studies with detailed information
+- **Case Files**: Access and manage case-specific files and documentation
+- **Interactive Modal System**: View detailed case information with an elegant modal interface
+- **Timeline Visualization**: Track the progression of investigations over time
+- **Workflow Documentation**: Understand the investigation methodology and process
+- **Responsive Design**: Fully responsive layout using Tailwind CSS
+- **Hero Section**: Engaging landing page with navigation
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend Framework**: React 18
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Styling Support**: PostCSS
+- **Linting**: ESLint
+- **Development Server**: HMR (Hot Module Replacement) enabled
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── components/
+│   ├── CaseCard.jsx      # Individual case card component
+│   ├── CaseFiles.jsx     # Case files display
+│   ├── CaseModal.jsx     # Modal for detailed case view
+│   ├── Hero.jsx          # Landing page hero section
+│   ├── Navbar.jsx        # Navigation bar
+│   ├── Timeline.jsx      # Investigation timeline
+│   └── WorkFlow.jsx      # Investigation workflow steps
+├── data/
+│   └── portfilioData.js  # Case data and portfolio information
+├── pages/                # Page components
+├── App.jsx               # Main App component
+├── main.jsx              # Application entry point
+└── index.css             # Global styles
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Development
+
+Start the development server with hot module replacement:
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+### Build
+
+Create a production-ready build:
+
+```bash
+npm run build
+```
+
+### Preview
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+### Linting
+
+Run ESLint to check code quality:
+
+```bash
+npm run lint
+```
+
+## Configuration Files
+
+- **vite.config.js**: Vite build and development configuration
+- **tailwind.config.js**: Tailwind CSS customization
+- **postcss.config.js**: PostCSS plugin configuration
+- **eslint.config.js**: ESLint rules and configuration
+
+## Browser Support
+
+This application works on all modern browsers with ES6+ support.
+
+## License
+
+This project is part of a portfolio showcase.
+
+## Contributing
+
+Contributions and suggestions are welcome. Please feel free to submit issues or pull requests.
