@@ -2,7 +2,6 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CaseFiles from "./components/CaseFiles";
 import Workflow from "./components/Workflow";
-import Timeline from "./components/Timeline";
 function App() {
   return (
     <>
@@ -10,7 +9,6 @@ function App() {
       <Hero />
       <Workflow />
       <CaseFiles />
-      <Timeline />
     </>
   );
 }

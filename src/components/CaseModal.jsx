@@ -1,39 +1,46 @@
-import { motion } from "framer-motion";
+import React from "react";
 
-export default function CaseModal({ project, onClose }) {
+const CaseModal = ({ project, onClose }) => {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center">
-
-      {/* BACKDROP CLICK */}
-      <div className="absolute inset-0" onClick={onClose} />
-
-      {/* MODAL */}
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="relative bg-[#0b1220]/90 border border-blue-500/20 rounded-xl p-8 max-w-2xl w-full z-10"
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+    >
+      {/* Modal */}
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="w-[90%] max-w-3xl bg-[#020617] border border-blue-500/20 rounded-2xl p-6 shadow-[0_0_40px_rgba(59,130,246,0.2)] animate-[fadeIn_0.3s_ease]"
       >
-        {/* CLOSE */}
+        {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white"
+          className="absolute top-4 right-5 text-gray-400 hover:text-white text-lg"
         >
           ✕
         </button>
 
-        {/* TITLE */}
-        <h2 className="text-2xl font-semibold text-white mb-2">
+        {/* Image */}
+        <div className="overflow-hidden rounded-lg mb-4">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-52 object-cover hover:scale-105 transition duration-500"
+          />
+        </div>
+
+        {/* Title */}
+        <h2 className="text-2xl font-bold mb-2 text-white">
           {project.title}
         </h2>
 
-        {/* DESC */}
-        <p className="text-gray-400 mb-4">
-          {project.description}
+        {/* Description */}
+        <p className="text-gray-400 mb-4 leading-relaxed">
+          {project.details}
         </p>
 
-        {/* TECH */}
+        {/* Tech */}
         <div className="flex flex-wrap gap-2 mb-6">
           {project.tech.map((t, i) => (
             <span
@@ -45,21 +52,26 @@ export default function CaseModal({ project, onClose }) {
           ))}
         </div>
 
-        {/* ACTIONS */}
+        {/* Buttons */}
         <div className="flex gap-4">
           <a
             href={project.github}
             target="_blank"
-            className="px-4 py-2 border border-white/20 rounded-lg hover:bg-white/10"
+            className="px-5 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition"
           >
-            GitHub
+            View GitHub
           </a>
 
-          <button className="px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600">
-            Live Demo
+          <button
+            onClick={onClose}
+            className="px-5 py-2 border border-white/20 rounded-lg hover:border-white/40 transition"
+          >
+            Close Case
           </button>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
-}
+};
+
+export default CaseModal;
