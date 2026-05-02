@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+import CaseModal from "./CaseModal";
+//import { projects } from "../data/portfolioData";
 
 const cases = [
   {
