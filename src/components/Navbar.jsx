@@ -1,55 +1,71 @@
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from "react";
 
-const links = [
-  { to: '/', label: 'Home' },
-  { to: '/cases', label: 'Case Files' },
-  { to: '/toolkit', label: 'Toolkit' },
-  { to: '/experience', label: 'Experience' },
-  { to: '/contact', label: 'Contact' }
-]
+const sections = [
+  { id: "home", label: "Home" },
+  { id: "workflow", label: "Process" },
+  { id: "cases", label: "Case Files" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Toolkit" },
+  { id: "certifications", label: "Certifications" },
+  { id: "contact", label: "Contact" },
+];
 
-const linkClasses = ({ isActive }) =>
-  `rounded-md px-3 py-2 text-sm transition-colors ${
-    isActive ? 'text-cyan-300' : 'text-slate-300 hover:text-cyan-200'
-  }`
+const Navbar = () => {
+  const [active, setActive] = useState("home");
 
-const Navbar = ({ isLight, onToggleTheme }) => {
+  useEffect(() => {
+    const handleScroll = () => {
+      let current = "home";
+
+      sections.forEach((sec) => {
+        const el = document.getElementById(sec.id);
+        if (el) {
+          const top = el.offsetTop - 120;
+          if (window.scrollY >= top) {
+            current = sec.id;
+          }
+        }
+      });
+
+      setActive(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/75 backdrop-blur-xl">
-      <nav className="mx-auto w-full max-w-6xl px-5 py-3 md:px-8 md:py-4">
-        <div className="flex items-center justify-between">
-          <NavLink to="/" className="text-base font-semibold tracking-wide text-slate-100">
-            DataDetective
-          </NavLink>
-<nav className="fixed w-full top-0 z-50 bg-black/40 backdrop-blur-md border-b border-gray-800"></nav>
-          <div className="hidden items-center gap-1 md:flex">
-            {links.map((link) => (
-              <NavLink key={link.to} to={link.to} className={linkClasses}>
-                {link.label}
-              </NavLink>
-            ))}
-          </div>
+    <nav className="fixed top-0 left-0 w-full z-50 bg-[#020617]/80 backdrop-blur-md border-b border-white/10">
 
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            className="rounded-md border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-xs font-medium text-slate-200 transition hover:border-cyan-400/40 hover:text-cyan-200"
-            aria-label="Toggle color theme"
-          >
-            {isLight ? 'Dark' : 'Light'}
-          </button>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-        <div className="mt-2 flex gap-1 overflow-x-auto pb-1 md:hidden">
-          {links.map((link) => (
-            <NavLink key={`mobile-${link.to}`} to={link.to} className={linkClasses}>
-              {link.label}
-            </NavLink>
+        {/* LOGO */}
+        <h1 className="text-lg font-semibold text-blue-400">
+          DataDetective
+        </h1>
+
+        {/* LINKS */}
+        <div className="flex gap-6 text-sm">
+
+          {sections.map((sec) => (
+            <a
+              key={sec.id}
+              href={`#${sec.id}`}
+              className={`transition ${
+                active === sec.id
+                  ? "text-blue-400"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+              {sec.label}
+            </a>
           ))}
-        </div>
-      </nav>
-    </header>
-  )
-}
 
-export default Navbar
+        </div>
+
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

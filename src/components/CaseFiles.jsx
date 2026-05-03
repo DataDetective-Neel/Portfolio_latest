@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CaseModal from "./CaseModal";
 import { projects } from "../data/portfolioData";
-
+import SectionWrapper from "./SectionWrapper";
 const CaseFiles = () => {
   const [selected, setSelected] = useState(null);
 
