@@ -18,7 +18,7 @@ export const projects = [
     details:
       "Developed an ML-assisted failure triage system analyzing CI/CD logs. Suggested root causes and automated debugging hints.",
     tech: ["FastAPI", "Docker", "PostgreSQL", "Kafka"],
-    github: "https://github.com/your-link",
+    github: "https://github.com/thelegendaryarticuno/hacktofuture4-D02",
     image: "/code.png",
   },
   {

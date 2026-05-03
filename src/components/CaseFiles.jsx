@@ -6,60 +6,91 @@ const CaseFiles = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <section className="relative bg-[#020617] text-white py-20 px-6 overflow-hidden">
+    <SectionWrapper id="cases" variant="center">
+    <section className="relative bg-[#020617] text-white py-24 px-6 overflow-hidden">
+
+      {/* ===== BACKGROUND LAYERS ===== */}
+
+      {/* grid */}
       <div className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(#1e293b_1px,transparent_1px),linear-gradient(90deg,#1e293b_1px,transparent_1px)] bg-[size:60px_60px]" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/10 blur-[120px]" />
-      <div className="absolute left-0 top-0 w-[30%] h-full bg-gradient-to-r from-[#020617] to-transparent" />
-<div className="absolute right-0 top-0 w-[30%] h-full bg-gradient-to-l from-[#020617] to-transparent" />
-<div className="relative z-10">
-  {/* your entire CaseFiles content */}
 
-      {/* Title */}
-      <div className="flex justify-between items-center mb-10">
-        <h2 className="text-3xl font-bold">Featured Case Files</h2>
-        <p className="text-blue-400 cursor-pointer">
-          View all cases →
-        </p>
-      </div>
+      {/* glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-blue-600/10 blur-[140px]" />
 
-      {/* Cards */}
-      <div className="grid md:grid-cols-3 gap-6">
-        {projects.map((p) => (
-          <div
-            key={p.id}
-            className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-blue-500/30 transition"
-          >
-            <img
-              src={p.image}
-              className="rounded mb-3 h-40 w-full object-cover"
-            />
+      {/* side fades */}
+      <div className="absolute left-0 top-0 w-[25%] h-full bg-gradient-to-r from-[#020617] to-transparent" />
+      <div className="absolute right-0 top-0 w-[25%] h-full bg-gradient-to-l from-[#020617] to-transparent" />
 
-            <p className="text-xs text-blue-400 mb-1">
-              DD-00{p.id}
-            </p>
+      {/* ===== CONTENT WRAPPER ===== */}
+      <div className="relative z-10 max-w-7xl mx-auto">
 
-            <h3 className="font-semibold text-lg mb-2">
-              {p.title}
-            </h3>
+        {/* ===== HEADER ===== */}
+        <div className="flex justify-between items-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold">
+            Featured Case Files
+          </h2>
 
-            <p className="text-gray-400 text-sm mb-3">
-              {p.description}
-            </p>
+          <p className="text-blue-400 cursor-pointer hover:underline">
+            View all cases →
+          </p>
+        </div>
 
-            <button
-              onClick={() => setSelected(p)}
-              className="text-blue-400 text-sm"
+        {/* ===== CARDS GRID ===== */}
+        <div className="grid md:grid-cols-3 gap-8">
+
+          {projects.map((p) => (
+            <div
+              key={p.id}
+              className="group relative rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md transition duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-400/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.25)]"
             >
-              Open Case →
-            </button>
-          </div>
-        ))}
+
+              {/* image */}
+              <img
+                src={p.image}
+                alt={p.title}
+                className="h-44 w-full object-cover"
+              />
+
+              {/* content */}
+              <div className="p-5">
+
+                <p className="text-xs text-blue-400 mb-2">
+                  DD-00{p.id}
+                </p>
+
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-400 transition">
+                  {p.title}
+                </h3>
+
+                <p className="text-gray-400 text-sm mb-4">
+                  {p.description}
+                </p>
+
+                <button
+                  onClick={() => setSelected(p)}
+                  className="text-blue-400 text-sm hover:underline"
+                >
+                  Open Case →
+                </button>
+              </div>
+
+              {/* glow effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                <div className="absolute inset-0 bg-blue-500/10 blur-xl"></div>
+              </div>
+
+            </div>
+          ))}
+
+        </div>
 
       </div>
 
-      {/* Modal */}
+      {/* ===== MODAL ===== */}
       <CaseModal project={selected} onClose={() => setSelected(null)} />
-    </div></section>
+
+    </section>
+    </SectionWrapper>
   );
 };
 

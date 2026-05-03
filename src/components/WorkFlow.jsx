@@ -1,8 +1,10 @@
 import React from "react";
+import SectionWrapper from "./SectionWrapper";
 
 const Workflow = () => {
   return (
-    <section className="relative min-h-screen bg-[#020617] text-white overflow-hidden">
+    <SectionWrapper id="workflow" variant="left">
+      <section className="relative min-h-screen bg-[#020617] text-white overflow-hidden">
 
       {/* ===== BACKGROUND GRID ===== */}
       <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(#1e293b_1px,transparent_1px),linear-gradient(90deg,#1e293b_1px,transparent_1px)] bg-[size:60px_60px]" />
@@ -126,7 +128,8 @@ const Workflow = () => {
 
           </div>
 
-    </section>
+      </section>
+    </SectionWrapper>
   );
 };
 
